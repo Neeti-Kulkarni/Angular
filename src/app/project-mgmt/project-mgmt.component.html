@@ -1,0 +1,52 @@
+<form [formGroup]="createProjectForm" (ngSubmit)="onCreateProject()">
+  <input formControlName="projectName" class="form-control" placeholder="Project Name" required>
+  <input formControlName="assignedTo" class="form-control" placeholder="Assign To" required>
+  <input formControlName="startDate" type="date" class="form-control" required>
+  <input formControlName="endDate" type="date" class="form-control" required>
+  <select formControlName="status" class="form-select" required>
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+  </select>
+  <textarea formControlName="description" class="form-control" placeholder="Description"></textarea>
+  <div>
+    <button type="submit" class="btn btn-primary">Create Project</button>
+  </div>
+</form>
+
+<div class="mt-4">
+  <h3>List of Projects</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Project ID</th>
+        <th>Project Name</th>
+        <th>Assigned To</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <!-- Uncomment this if you need the status column -->
+        <!-- <th>Status</th> -->
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- No nested <tbody> tag -->
+      <tr *ngFor="let project of projects">
+        <td>{{project.projectId}}</td>
+        <td>{{project.projectName}}</td>
+        <td>{{project.assignedTo}}</td>
+        <td>{{project.startDate}}</td>
+        <td>{{project.endDate}}</td>
+        <!-- Uncomment this if status is needed -->
+        <!-- <td>{{project.status}}</td> -->
+        <td>{{project.description}}</td>
+        <td>
+          <!-- Task Management Button -->
+          <button class="btn btn-secondary" (click)="manageTasks(project.projectId)">
+            Manage Tasks
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

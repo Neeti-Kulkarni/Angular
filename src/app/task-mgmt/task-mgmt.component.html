@@ -1,0 +1,41 @@
+<div class="task-container">
+    <h2 class="title">Task Management</h2>
+  
+    <!-- Add Task Form -->
+    <form (submit)="onCreateTask()">
+      <div class="form-group">
+        <label for="taskName">Task Name</label>
+        <input type="text" id="taskName" [(ngModel)]="newTask.taskName" name="taskName" required />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" [(ngModel)]="newTask.description" name="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" [(ngModel)]="newTask.status" name="status" required>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+      <button type="submit" class="add-task-btn">Add Task</button>
+    </form>
+  
+    <!-- Task List -->
+    <div class="task-list">
+      <h3>Tasks</h3>
+      <ul>
+        <li *ngFor="let task of tasks">
+          <div class="task-item">
+            <h4>{{ task.taskName }}</h4>
+            <p>{{ task.description }}</p>
+            <span class="status">{{ task.status }}</span>
+            <button class="edit-btn" (click)="onUpdateTask(task)">Edit</button>
+            <button class="delete-btn" (click)="onDeleteTask(task.taskId)">Delete</button> 
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
