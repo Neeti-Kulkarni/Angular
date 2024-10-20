@@ -1,0 +1,22 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="cPageItem" [class.disabled]="currentPage === 1">
+        <a class="cPageLink" aria-label="Previous" (click)="setPage(currentPage - 1)">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      
+      <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
+        <li class="cPageItem" [class.active]="i + 1 === currentPage">
+          <a class="cPageLink" (click)="setPage(i + 1)">{{ i + 1 }}</a>
+        </li>
+      </ng-container>
+  
+      <li class="cPageItem" [class.disabled]="currentPage === totalPages">
+        <a class="cPageLink" aria-label="Next" (click)="setPage(currentPage + 1)">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  

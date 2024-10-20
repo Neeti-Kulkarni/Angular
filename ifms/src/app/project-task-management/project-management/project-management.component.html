@@ -1,0 +1,104 @@
+<!-- main-container.component.html -->
+<div class="main-container">
+  <!-- Upper Half: Project and Task Management Side-by-Side -->
+  <div class="upper-half">
+    <div class="project-container">
+      <h2>Project Management</h2>
+      <form [formGroup]="createProjectForm" (ngSubmit)="onCreateProject()"  *ngIf="createProjectForm">
+        <input formControlName="projectName" class="form-control" placeholder="Project Name" required>
+        <input formControlName="assignedTo" class="form-control" placeholder="Assign To" required>
+        <input formControlName="startDate" type="date" class="form-control" required>
+        <input formControlName="endDate" type="date" class="form-control" required>
+        <div>
+          <textarea formControlName="description" class="form-control" placeholder="Description"></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Create Project</button>
+          </div>
+        </form>
+      <ul> 
+        <li *ngFor="let project of projects">
+          {{ project.projectName }} - <strong>{{ project.description }}</strong>
+        </li>
+      </ul>
+      </div>
+    
+
+    <div class="task-container">
+      <app-task-management></app-task-management>
+    </div>
+  </div>
+
+  <!-- Lower Half: Project Details -->
+  <div class="lower-half">
+    <h2>Project Details</h2>
+    <p>Details about the selected project will be shown here...</p>
+    <div class="mt-4">
+      <h3>List of Projects</h3>
+      <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th>Project ID</th>
+                  <th>Project Name</th>
+                  <th>Assigned To</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <!--<th>Sprint Number</th>-->
+                  <th>Status</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tbody>
+              <tr *ngFor="let project of projects">
+                <td>{{project.projectId}}</td>
+                <td>{{project.projectName}}</td>     
+                <td>{{project.assignedTo}}</td>
+               
+                <td>{{project.startDate}}</td>
+                <td>{{project.endDate}}</td>
+                <!--<td>{{project.sprintNo}}</td>-->
+        
+          <select [(ngModel)]="project.status">
+            <option *ngFor="let status of projectStatuses" [value]="status">{{ status }}</option>
+          </select>
+                <td>{{project.description}}</td>           
+                    <td>
+                      <button (click)="viewTasks(project)" class="btn btn-info btn-sm">View Tasks
+                        {{ project.isLoading ? 'Hide Tasks' : 'View Tasks' }}
+                      </button>
+                      <button (click)="deleteProject(project.projectId)" class="btn btn-danger btn-sm ml-2">Delete</button>
+                    </td>
+                  
+                  
+                  <td *ngIf="project.isLoading">
+                  
+                    <h5>Tasks for Project ID: {{ project.projectId }}</h5>
+                      
+                      <ul class="list-group">
+                        <li *ngFor="let task of project.tasks" class="list-group-item">
+                          
+                          <strong>{{ task.taskName }}</strong> - {{ task.description }} (Status: {{ task.status }})<br />
+                          <small>Assigned to: {{ task.assignedToUserName }} | Priority: {{ task.priority }}</small><br />
+                          <small>Start Date: {{ task.startDate | date }} | End Date: {{ task.endDate | date }}</small>
+                         <!-- Emit event from child component 
+                          <task-management>
+                            [task]="task" 
+                            (updateTask)="onUpdateTask($event)"
+                            (deleteTask)="onDeleteTask($event)">
+                          </task-management>-->
+                          <div class="task-actions">
+                            <button class="btn btn-sm btn-warning" (click)="openEditTaskDialog(task)">Edit task</button>
+                            <button class="btn btn-sm btn-danger" (click)="onDeleteTask(task.taskId)">Delete</button>
+                          </div>
+                        </li>
+                      </ul>
+                    </td>
+                  
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  </div>
+</div>

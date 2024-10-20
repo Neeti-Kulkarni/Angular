@@ -1,0 +1,66 @@
+/* user-view.component.css */
+
+/* Center the dialog content */
+.mat-dialog-container {
+    display: flex;
+    flex-direction: column; /* Stack title, content, and actions vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center items horizontally */
+    padding: 20px; /* Padding around the dialog */
+    background-color: #f0f8ff; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    max-width: 400px; /* Max width of the dialog */
+    width: 90vw; /* Use 90% of viewport width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    font-family: 'Arial', sans-serif; /* Define a common font for the modal */
+}
+
+/* Title styles */
+h2 {
+    text-align: center;
+    color: #8b5050; /* Title color */
+    margin: 0 0 20px; /* Space below title */
+    font-size: 24px; /* Font size for title */
+    font-weight: bold; /* Bold title */
+    text-decoration: underline; /* Add underline to the title */
+}
+
+/* Styles for user details */
+.user-details {
+    width: 100%; /* Full width of the modal */
+    max-width: 400px; /* Max width for content */
+    margin: 0 auto; /* Center the content */
+    text-align: left; /* Align text to the left for readability */
+}
+
+/* Paragraph styles */
+.user-details p {
+    margin: 8px 0; /* Space between paragraphs */
+    font-size: 14px; /* Font size for details */
+    color: #333; /* Dark color for text for better readability */
+}
+
+/* Button styles */
+button {
+    background-color: #b3a48f; /* Primary button color */
+    color: white; /* Text color */
+    padding: 12px 20px; /* Increased padding for larger button size */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+   /* width: 100%; /* Make button full-width */
+    font-size: 18px; /* Increased font size for better visibility */
+}
+
+/* Button hover effect */
+button:hover:not(:disabled) {
+    background-color: #8b5050; /* Darker color on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .mat-dialog-container {
+        width: 90vw; /* Adjust modal to use 90% of viewport width on smaller screens */
+    }
+}

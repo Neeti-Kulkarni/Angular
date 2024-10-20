@@ -1,0 +1,105 @@
+/* Styles for centering the form */
+form {
+    width: 100%; /* Make the form full width of the modal */
+    max-width: 400px; /* Set a maximum width for the form to be smaller than the dashboard */
+    margin: 20px auto; /* Center the form horizontally and add space above and below */
+    padding: 20px; /* Add some padding inside the form */
+    border: 1px solid #ccc; /* Optional: add a border */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow effect */
+    background-color: #f0f8ff; /* Light background color */
+}
+
+/* Center the title with a different color */
+h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Space below the title */
+    color: #8b5050; /* Title color */
+}
+
+/* Centering modal content */
+.mat-dialog-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align items to the top */
+    width: 100vw; /* Full viewport width */
+    max-width: 500px; /* Set a maximum width for the modal */
+    padding: 20px; /* Adjust padding around the modal */
+    box-sizing: border-box; /* Include padding in the width */
+    background-color: white; /* Set background color to white to differentiate from form */
+    border-radius: 8px; /* Optional: rounded corners for the modal */
+}
+
+/* Styles for form controls */
+div {
+    margin-bottom: 8px; /* Reduced space between each form element */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+}
+
+/* Label styles */
+label {
+    width: 100px; /* Set a fixed width for labels for consistency */
+    margin-right: 5px; /* Reduced space between label and input */
+    font-weight: bold; /* Make the label bold */
+}
+
+/* Input styles */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea,
+select {
+    flex: 1; /* Allow inputs to take available space */
+    padding: 8px; /* Slightly reduced padding for inputs */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Error message styles */
+span {
+    color: red; /* Error messages in red */
+    font-size: 0.7em; /* Slightly smaller font for error messages */
+}
+
+/* Button styles */
+button {
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+    padding: 10px 15px; /* Padding */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    width: 100%; /* Make button full-width */
+}
+
+button:disabled {
+    background-color: #ccc; /* Color when disabled */
+}
+
+/* Change button background color on hover */
+button:hover:not(:disabled) {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+/* Center the button */
+div:last-child {
+    justify-content: center; /* Center button horizontally */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .mat-dialog-container {
+        width: 90vw; /* Adjust modal to use 90% of viewport width on smaller screens */
+        padding: 10px; /* Adjust padding */
+    }
+
+    form {
+        width: 100%; /* Ensure form takes full width */
+        max-width: 400px; /* Keep max-width to make it smaller than the dashboard */
+        margin: 10px auto; /* Center the form with less margin on smaller screens */
+    }
+}

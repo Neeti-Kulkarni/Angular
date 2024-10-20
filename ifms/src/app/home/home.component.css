@@ -1,0 +1,42 @@
+.d-flex {
+    display: flex; /* Enable Flexbox layout */
+  }
+  
+  /* Sidebar styling */
+  app-sidebar {
+    width: 200px; /* Set a fixed width for the sidebar */
+    background-color: burlywood; /* Light background color */
+    padding: 20px; /* Add padding inside the sidebar */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for a subtle 3D effect */
+    height: 100vh; /* Make sidebar full height of the viewport */
+  }
+  
+  /* Main content styling */
+  app-main-content {
+    flex-grow: 1; /* Take up the remaining space in the flex container */
+    background-color:antiquewhite; /* Background color for the main content */
+    padding: 20px; /* Add padding around the content */
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    app-sidebar {
+      width: 200px; /* Adjust width for tablets */
+      padding: 15px; /* Adjust padding for smaller screens */
+    }
+  }
+  
+  /* Media query for mobile devices */
+  @media (max-width: 576px) {
+    app-sidebar {
+      width: 100%; /* Full width on mobile devices */
+      height: auto; /* Adjust height if necessary */
+      padding: 10px; /* Reduce padding for mobile devices */
+      box-shadow: none; /* Remove shadow for smaller screens */
+    }
+  
+    /* Optional: Adjust main content padding if needed */
+    app-main-content {
+      padding: 10px; /* Adjust padding for smaller screens */
+    }
+  }

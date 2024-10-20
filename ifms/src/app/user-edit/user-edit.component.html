@@ -1,0 +1,85 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <h1>Edit User Details</h1>
+    <div>
+        <label>User ID :</label>
+        <span>{{ userId }}</span> <!-- Display userId as plain text -->
+    </div>
+
+    <div>
+        <label for="userName">User Name :</label> <!-- Added colon -->
+        <input id="userName" formControlName="userName" type="text" />
+        <div *ngIf="userForm.get('userName')?.invalid && userForm.get('userName')?.touched">
+            <span *ngIf="userForm.get('userName')?.errors?.['required']">Name is required.</span>
+        </div>
+    </div>
+
+    <div>
+        <label>Email  :</label>
+        <span>{{ userForm.get('mailId')?.value }}</span> <!-- Display email as plain text -->
+    </div>
+
+    <!--  <div>
+        <label>Email  :</label>
+        <input formControlName="mailId" type="email" />
+        <div *ngIf="userForm.get('mailId')?.invalid && userForm.get('mailId')?.touched">
+            <span *ngIf="userForm.get('mailId')?.errors?.['required']">Email is required.</span>
+            <span *ngIf="userForm.get('mailId')?.errors?.['email']">Invalid email format.</span>
+        </div>
+    </div>-->
+
+    <div>
+        <label>Phone :</label>
+        <input formControlName="phone" type="tel" />
+        <div *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched">
+            <span *ngIf="userForm.get('phone')?.errors?.['required']">Phone number is required.</span>
+            <span *ngIf="userForm.get('phone')?.errors?.['pattern']">Phone number must be 10 digits.</span>
+        </div>
+    </div>
+
+    <div>
+        <label>Gender :</label>
+        <select formControlName="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Role :</label>
+        <input formControlName="role" />
+        <div *ngIf="userForm.get('role')?.invalid && userForm.get('role')?.touched">
+            <span *ngIf="userForm.get('role')?.errors?.['required']">Role is required.</span>
+        </div>
+    </div>
+
+    <div>
+        <label>Status :</label>
+        <select formControlName="status">
+            <option value="">Select Status</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+        <div *ngIf="userForm.get('status')?.invalid && userForm.get('status')?.touched">
+            <span *ngIf="userForm.get('status')?.errors?.['required']">Status is required.</span>
+        </div>
+    </div>
+
+    <div>
+        <label>Address :</label>
+        <textarea formControlName="address"></textarea>
+    </div>
+
+    <div>
+        <label>Date of Birth :</label>
+        <input formControlName="dateOfBirth" type="date" />
+        <div *ngIf="userForm.get('dateOfBirth')?.invalid && userForm.get('dateOfBirth')?.touched">
+            <span *ngIf="userForm.get('dateOfBirth')?.errors?.['required']">Date of Birth is required.</span>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" [disabled]="userForm.invalid">Save</button>
+    </div>
+</form>

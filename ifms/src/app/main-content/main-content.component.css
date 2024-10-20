@@ -1,0 +1,31 @@
+.container {
+  padding: 20px;
+}
+
+.content{
+  margin-bottom: 20px;
+  color: orangered;
+}
+.content2{
+  color: gray;
+  text-decoration: underline;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.mat-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* Ensure some padding around the dialog */
+  background-color: white; /* Optional: Background color for dialog */
+}

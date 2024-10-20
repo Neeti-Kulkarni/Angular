@@ -1,0 +1,128 @@
+<div class="task-container">
+  <h2>Task Management</h2>
+
+  <!-- Add Task Form -->
+  <h3>Add New Task</h3>
+  <form [formGroup]="createTaskForm" (ngSubmit)="onCreateTask()" *ngIf="createTaskForm">
+    <div class="form-group">
+      <label for="taskName" class="form-label">Task Name</label>
+      <input type="text" id="taskName" class="form-control" formControlName="taskName" />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" class="form-control" formControlName="description" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="priority" class="form-label">Priority</label>
+      <select id="priority" class="form-select" formControlName="priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select id="status" class="form-select" formControlName="status">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="date" id="startDate" class="form-control" formControlName="startDate" />
+    </div>
+
+    <div class="form-group">
+      <label for="endDate" class="form-label">End Date</label>
+      <input type="date" id="endDate" class="form-control" formControlName="endDate" />
+    </div>
+
+    <div class="form-group">
+      <label for="projectId" class="form-label">Project ID</label>
+      <input type="number" id="projectId" class="form-control" formControlName="projectId" />
+    </div>
+
+    <div class="form-group">
+      <label for="sprintId" class="form-label">Sprint ID</label>
+      <input type="number" id="sprintId" class="form-control" formControlName="sprintId" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Add Task</button>
+  </form>
+
+  <!-- Task List -->
+  <h3>Tasks List</h3>
+  <div class="task-list">
+    <ul>
+      <li *ngFor="let task of tasks">
+        <div class="task-item">
+          <h4>{{ task.taskName }}</h4>
+          <p>{{ task.description }}</p>
+          <span class="status">{{ task.status }}</span>
+          <button class="btn btn-warning" (click)="openEditTaskModal(task)">Edit</button>
+          <button class="btn btn-danger" (click)="onDeleteTask(task.taskId)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Edit Task Modal -->
+<div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editTaskModalLabel">Edit Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editTaskForm" (ngSubmit)="onUpdateTask()">
+          <div class="mb-3">
+            <label for="editTaskName" class="form-label">Task Name</label>
+            <input type="text" id="editTaskName" formControlName="taskName" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="editDescription" class="form-label">Description</label>
+            <textarea id="editDescription" formControlName="description" class="form-control"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="editPriority" class="form-label">Priority</label>
+            <select id="editPriority" formControlName="priority" class="form-select">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="editStatus" class="form-label">Status</label>
+            <select id="editStatus" formControlName="status" class="form-select">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="editStartDate" class="form-label">Start Date</label>
+            <input type="date" id="editStartDate" formControlName="startDate" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="editEndDate" class="form-label">End Date</label>
+            <input type="date" id="editEndDate" formControlName="endDate" class="form-control" />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

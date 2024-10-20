@@ -1,0 +1,21 @@
+<h2 mat-dialog-title style="text-align: center; color: #8b5050;">View User Details</h2>
+
+<div mat-dialog-content>
+    <div class="user-details">
+        <p><strong>ID:</strong> {{data.userId}}</p>
+        <p><strong>Name:</strong> {{data.userName}}</p>
+        <p><strong>Email:</strong> {{data.mailId}}</p>
+        <p><strong>Phone:</strong> {{data.phone}}</p>
+        <p><strong>Gender:</strong> {{data.gender}}</p>
+        <p><strong>Role:</strong> {{data.role}}</p>
+        <p><strong>Status:</strong> {{data.status}}</p>
+        <p><strong>Address:</strong> {{data.address || 'N/A'}}</p>
+        <p><strong>Date of Birth:</strong> {{data.dateOfBirth}}</p>
+        <p><strong>Date Created:</strong> {{data.dateCreated}}</p>
+        <p><strong>Date Modified:</strong> {{data.dateModified}}</p>
+    </div>
+</div>
+
+<div mat-dialog-actions style="justify-content: center;">
+  <button mat-button (click)="close()">Close</button>
+</div>
