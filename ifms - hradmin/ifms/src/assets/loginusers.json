@@ -1,0 +1,7 @@
+[
+    { "usernameOrEmail": "admin", "password": "admin123", "role": "admin" },
+    { "usernameOrEmail": "student", "password": "student123", "role": "student" },
+    { "usernameOrEmail": "hr", "password": "hr123", "role": "HR" },
+    { "usernameOrEmail": "vendor", "password": "vendor123", "role": "vendorHR" },
+    { "usernameOrEmail": "pm", "password": "pm123", "role": "projectManager" }
+  ]

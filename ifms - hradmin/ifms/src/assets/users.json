@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "Ashwini H S",
+      "role": "Student",
+      "email": "s.ashwini@example.com",
+      "phone": "123456789"
+    },
+    {
+      "id": 2,
+      "name": "Rekha",
+      "role": "Project Manager",
+      "email": "rekha@example.com",
+       "phone": "987654321"
+    },
+    {
+      "id": 3,
+      "name": "Mallikarjuna",
+      "role": "Administrator",
+      "email": "mallikarjuna@example.com",
+       "phone": "123498765"
+    },
+    {
+      "id": 4,
+      "name": "Afreen",
+      "role": "HR",
+      "email": "afreen@example.com",
+       "phone": "987651234"
+    }
+  ]

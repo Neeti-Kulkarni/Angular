@@ -1,0 +1,134 @@
+<div class="task-management-container">
+ 
+  <div class="create-task-form mb-4">
+    <h3>Create Task</h3>
+    <form [formGroup]="createTaskForm" (ngSubmit)="onCreateTask()">
+      <div>
+        <input formControlName="taskName" class="form-control" placeholder="Task Name" required />
+      </div>
+      <div class="mt-2">
+        <textarea formControlName="description" class="form-control" placeholder="Description"></textarea>
+      </div>
+      <div class="mt-2">
+        <select formControlName="priority" class="form-control" required>
+          <option value="" disabled selected>Select Priority</option>
+          <option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</option>
+        </select>
+      </div>
+      <div class="mt-2">
+        <select formControlName="status" class="form-control" required>
+          <option value="" disabled selected>Select Status</option>
+          <option *ngFor="let status of taskStatuses" [value]="status">{{ status }}</option>
+        </select>
+      </div>
+      
+      <!-- Start Date Field -->
+      <div class="mt-2">
+        <input type="date" formControlName="startDate" class="form-control" placeholder="Start Date" required />
+      </div>
+      
+      <!-- End Date Field -->
+      <div class="mt-2">
+        <input type="date" formControlName="endDate" class="form-control" placeholder="End Date" required />
+      </div>
+      
+      <!-- Project Selection Field -->
+      <div class="mt-2">
+        <select formControlName="projectId" class="form-control" required>
+          <option value="" disabled selected>Select Project</option>
+          <option *ngFor="let project of projects" [value]="project.projectId">{{ project.projectName }}</option>
+        </select>
+      </div>
+
+ 
+      <!-- Sprint Selection Field -->
+      <div class="mt-2">
+        <select formControlName="sprintId" class="form-control" required>
+          <option value="" disabled selected>Select Sprint</option>
+          <option *ngFor="let sprint of filteredSprints" [value]="sprint.sprintId">{{ sprint.sprintName }}</option>
+        </select>
+      </div>
+
+      <!-- Assigned To User Field 
+      <div class="mt-2">
+        <select formControlName="assignedToUserName" class="form-control">
+          <option value="" disabled selected>Select User</option>
+          <option *ngFor="let user of users" [value]="user.username">{{ user.fullName }}</option>
+        </select>
+      </div>-->
+      
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Create Task</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Task List -->
+  <div class="task-container">
+    <h3>Task List</h3>
+    <ul class="list-group mt-3">
+      <li *ngFor="let task of tasks" class="list-group-item">
+        <strong>{{ task.taskName }}</strong> - {{ task.description }} (Status: {{ task.status }})<br />
+        <small>Assigned to: {{ task.assignedToUserName }} | Priority: {{ task.priority }}</small><br />
+        <small>Start Date: {{ task.startDate | date }} | End Date: {{ task.endDate | date }}</small>
+        <div class="task-actions mt-2">
+          <button (click)="editTask(task)" class="btn btn-warning btn-sm">Edit</button>
+          <button (click)="onDeleteTask(task.taskId)" class="btn btn-danger btn-sm ml-2">Delete</button>
+        </div>
+      </li>
+    </ul>
+
+    <div *ngIf="tasks?.length === 0" class="mt-3">
+      <p>No tasks available. Create a new task to get started!</p>
+    </div>
+  </div>
+  
+  <!-- Edit Task Modal -->
+  <div class="modal" tabindex="-1" role="dialog" *ngIf="showEditModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Task</h5>
+          <button type="button" class="close" (click)="closeEditModal()">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="editTaskForm" (ngSubmit)="onEditTask()">
+            <input formControlName="taskName" class="form-control" placeholder="Task Name" required />
+            <textarea formControlName="description" class="form-control" placeholder="Description"></textarea>
+            <select formControlName="priority" class="form-control" required>
+              <option value="" disabled selected>Select Priority</option>
+              <option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</option>
+            </select>
+            <select formControlName="status" class="form-control" required>
+              <option value="" disabled selected>Select Status</option>
+              <option *ngFor="let status of taskStatuses" [value]="status">{{ status }}</option>
+            </select>
+            <!-- Project Selection Field -->
+        <!-- Project Selection Field -->
+    <div class="mt-2">
+      <label for="projectId">Project ID:</label>
+      <input id="projectId" [value]="selectedTask?.projectId" readonly class="form-control" />
+    </div>
+
+
+          <!-- Sprint Selection Field -->
+          <div class="mt-2">
+            <select formControlName="sprintId" class="form-control" required>
+              <option value="" disabled selected>Select Sprint</option>
+              <option *ngFor="let sprint of sprints" [value]="sprint.sprintId">{{ sprint.sprintName }}</option>
+            </select>
+          </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+              <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

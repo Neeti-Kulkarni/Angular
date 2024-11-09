@@ -1,0 +1,51 @@
+/* General Styles for Dialog */
+.mat-dialog-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.mat-dialog-content {
+  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto; /* Scrollable content */
+}
+
+.table {
+  width: 100%;
+}
+
+/* Sprint Actions Button Styling */
+.sprint-actions {
+  display: flex;
+  justify-content: flex-start; /* Align Add Sprint button to the left */
+  margin-top: 20px; /* Spacing above */
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  margin-top: 20px; /* Spacing above */
+}
+
+/* Form Field Styles */
+mat-form-field {
+  width: 100%; /* Full width */
+  margin-bottom: 20px; /* Space between fields */
+}
+
+/* Button Styles */
+button {
+  margin-right: 10px; /* Space between action buttons */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mat-dialog-content {
+    padding: 10px;
+  }
+
+  .table {
+    font-size: 14px; /* Smaller font size for mobile */
+  }
+}

@@ -1,0 +1,26 @@
+<div class="header d-flex align-items-center">
+  <a routerLink="/">
+    <img class="main-logo" src="assets/images.png" alt="Company Logo">
+  </a>
+  <div class="search-container">
+    <!-- <input 
+    type="text" 
+    class="search-box" 
+    placeholder="Search..." > -->
+    <input  
+    type="text" 
+    class="search-box" 
+    placeholder="Search..." 
+    [(ngModel)]="searchTerm" 
+    (keyup)="onSearch(searchTerm)"> 
+  <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+  <div class="head-right-item" (click)="toggleDropdown()">
+    <button class="btn-theme" type="button">
+      <fa-icon [icon]="faSignOutAlt" class="logout-icon"></fa-icon>
+    </button>
+    <div class="dropdown-menu" *ngIf="isDropdownOpen">
+      <a (click)="onUpdateProfile()">Update Profile</a>
+      <a (click)="onLogout()">Logout</a>
+    </div>
+  </div>
+</div>

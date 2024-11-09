@@ -1,0 +1,31 @@
+.container{
+    margin-bottom: 20px;
+  color: purple;
+}
+.container1{
+    color: blue;
+}
+.container, .container1 {
+    margin: 20px;
+}
+
+.attendance-container {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.attendance-container label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.attendance-status {
+    margin-top: 15px;
+}
+input[type="date"],
+input[type="number"] {
+    width: calc(33.33% - 10px); /* Adjust width for 3 inputs */
+    margin-right: 10px;
+}

@@ -1,0 +1,33 @@
+<div class="container">
+    <header class="header">
+        <div class="header-content">
+          <h1>HR Admin Dashboard</h1>
+          <nav class="header-nav">
+            <ul>
+              <li><a routerLink="/leaves">Leaves</a></li>
+              <li><a routerLink="/attendance">Attendance</a></li>
+              
+            </ul>
+          </nav>
+        </div>
+      </header>
+      
+    
+    <div class="main-layout">
+      <aside class="side-panel">
+        <!-- Add side panel content such as navigation links here -->
+        <ul>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a routerLink="/hr-admin/hr-admin-projects">Projects</a></li> <!-- Link to HR Admin Projects -->
+          <li><a routerLink="/hr-admin/hr-admin-users">Manage Users</a></li>
+          <li><a href="/feedback">Feedback Forms</a></li>
+        </ul>
+        
+      </aside>
+      <main class="content">
+        <router-outlet></router-outlet> <!-- Child components will be displayed here -->
+      </main>
+ </div>
+</div>
+ 
+  

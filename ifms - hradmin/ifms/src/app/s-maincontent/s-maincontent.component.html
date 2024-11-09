@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Welcome to Student Dashboard...!</h1>
+</div>
+<div class="container1">
+    <h2>Class Attendance</h2>
+    
+    <!-- New Container for Attendance Form -->
+    <div class="attendance-container">
+        <label for="attendance-date">Select Date <span style="color: red;">*</span></label>
+        <input type="date" id="attendance-date" required>
+          <div class="attendance-status">
+            <label>Attendance Status:</label>
+            <div>
+                <input type="radio" id="present" name="attendance" value="present" required>
+                <label for="present">Present</label>
+            </div>
+            <div>
+                <input type="radio" id="absent" name="attendance" value="absent" required>
+                <label for="absent">Leave</label>
+            </div>
+        </div>
+        <button (click)="saveAttendance()">Save</button>
+    </div>
+</div>

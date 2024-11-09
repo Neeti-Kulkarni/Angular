@@ -1,0 +1,107 @@
+<h2 mat-dialog-title>Sprint Management for Project ID: {{ projectId }}</h2>
+
+<mat-dialog-content>
+  <table mat-table [dataSource]="sprints" class="mat-elevation-z8">
+
+    <!-- Sprint Name Column -->
+    <ng-container matColumnDef="sprintName">
+      <th mat-header-cell *matHeaderCellDef> Sprint Name </th>
+      <td mat-cell *matCellDef="let sprint"> {{ sprint.sprintName }} </td>
+    </ng-container>
+
+    <!-- Start Date Column -->
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef> Start Date </th>
+      <td mat-cell *matCellDef="let sprint"> {{ sprint.startDate | date }} </td>
+    </ng-container>
+
+    <!-- End Date Column -->
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef> End Date </th>
+      <td mat-cell *matCellDef="let sprint"> {{ sprint.endDate | date }} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let sprint">
+        <button mat-button (click)="openSprintDialog(sprint)">Edit</button>
+        <button mat-button color="primary" (click)="startSprint(sprint.sprintId)">Start</button>
+        <button mat-button color="warn" (click)="deleteSprint(sprint.sprintId)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div class="sprint-actions">
+    <button mat-raised-button color="primary" (click)="openSprintDialog()">Add Sprint</button>
+  </div>
+
+  <!-- Sprint Form Dialog -->
+  <ng-container *ngIf="isDialogOpen">
+    <h3>{{ editingSprint ? 'Edit Sprint' : 'New Sprint' }}</h3>
+    <form [formGroup]="sprintForm" (ngSubmit)="onSubmit()">
+      
+      <mat-form-field>
+        <mat-label>Sprint Name</mat-label>
+        <input matInput formControlName="sprintName" required>
+        <mat-error *ngIf="sprintForm.get('sprintName')?.invalid">Name is required.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="projectId" placeholder="{{projectId}}" readonly />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="projectName" placeholder="{{projectName}}" readonly />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Sprint No</mat-label>
+        <input matInput formControlName="sprintNo" required />
+        <mat-error *ngIf="sprintForm.get('sprintNo')?.hasError('required')">Sprint No is required.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="startDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error *ngIf="sprintForm.get('startDate')?.invalid">Start date is required.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="endDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="sprintForm.get('endDate')?.invalid">End date is required.</mat-error>
+      </mat-form-field>
+
+      <!-- List Box for Status -->
+      <label for="status">Status</label>
+      <select 
+        formControlName="status" 
+        id="status" 
+        size="4" 
+        required 
+        class="status-listbox">
+        <option *ngFor="let status of sprintStatuses" [value]="status">
+          {{ status }}
+        </option>
+      </select>
+      <div *ngIf="sprintForm.get('status')?.invalid" class="error">
+        Status is required.
+      </div>
+
+      <button mat-raised-button type="submit">Save</button>
+      <button mat-button (click)="closeDialog()">Cancel</button>
+    </form>
+  </ng-container>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+</mat-dialog-actions>
